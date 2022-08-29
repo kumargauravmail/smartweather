@@ -1,0 +1,9 @@
+services:
+  # service to get client IP location
+  smartweather.clientlocation:
+    class: '\Drupal\smartweather\Services\ClientLocation'
+    arguments: ['@request_stack', '@http_client', '@cache.default']
+  # service to get weather details
+  smartweather.openweather:
+    class: '\Drupal\smartweather\Services\OpenWeather'
+    arguments: ['@http_client', '@cache.default']

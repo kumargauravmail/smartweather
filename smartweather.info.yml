@@ -1,0 +1,10 @@
+name: Smart Weather Forecast
+type: module
+description: Get weather forecast from OpenWeather
+configure: smartweather.admin_settings_form
+core_version_requirement: ^8 || ^9
+
+# Information added by Drupal.org packaging script on 2022-02-12
+version: '8.x-1.1'
+project: 'smartweather'
+datestamp: 1644686305

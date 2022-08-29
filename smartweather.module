@@ -1,0 +1,15 @@
+<?php
+
+/**
+* implements hook_theme().
+*/
+
+  function smartweather_theme() {
+    return [
+      'openweathermap' => [
+        'variables' => [
+          'weather_data' => NULL,
+        ],
+      ],
+    ];
+  }

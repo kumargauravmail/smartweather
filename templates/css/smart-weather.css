@@ -1,0 +1,19 @@
+#currentweather, #weatherforecast {
+  font-family: Arial, Helvetica, sans-serif;
+}
+#currentweather .weathertemp {
+  display: flex;
+}
+#currentweather .weathertempunit {
+  font-size: 36px;
+}
+#currentweather .weatherdate {
+  font-size: 15px;
+}
+#weatherforecast .weathertemp {
+  display: flex;
+  align-items: center;
+}
+#weatherforecast .weatherdate, #weatherforecast .weathertempunit {
+  font-size: 17px;
+}

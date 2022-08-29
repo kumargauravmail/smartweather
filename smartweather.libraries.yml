@@ -1,0 +1,5 @@
+weatherblock:
+  version: 1.x
+  css:
+    theme:
+      templates/css/smart-weather.css: {}

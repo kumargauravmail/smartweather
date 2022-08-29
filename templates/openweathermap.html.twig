@@ -1,0 +1,67 @@
+{#
+/**
+  * @file
+  * Default theme implementation for smartweather.
+  *
+  * Available variables
+  * - weather_data: Weather data array
+*/
+#}
+
+{% set unit = "F" %}
+
+{% if weather_data["unit"] == "metric" %}
+     {% set unit = "C" %}
+{% endif %}
+
+{% if weather_data["forecast_days"] != "" %}
+  {% set forecast_days = weather_data["forecast_days"] %}
+{% endif %}
+
+<div id="currentweather">
+
+{% if weather_data["error"] != '' %}
+  <span class="weathererror">{{ weather_data["error"] }}</span>
+{% else %}
+    {% set icon = weather_data.data.current.weather.0.icon %}
+
+    <div class="weatherdate">
+      {{ weather_data.data.current.dt|date('M j, Y') }}
+    </div>
+    <div class="weathertemp">
+      <span class="weathericon"><img src="http://openweathermap.org/img/wn/{{ icon }}@2x.png" width="50px" height="50px"></span>
+      <span class="weathertempunit">{{ weather_data.data.current.temp|round }} <sup>o</sup> {{ unit }}</span>
+    </div>
+
+     <div class="weatherfeelslike">
+       <span>{{ "Feels like"|t }}: {{ weather_data.data.current.feels_like|round }} <sup>o</sup> {{ unit }}. </span>
+       <span class="main">{{ weather_data.data.current.weather.0.main }}. </span>
+     </div>
+     <div class="weatherhumidity">
+       <span>{{ "Humidity"|t }}: {{ weather_data.data.current.humidity }} %</span>
+     </div>
+</div>
+{% endif %}
+
+{% if forecast_days != '' %}
+<div id="weatherforecast">
+
+{% for i in 1..forecast_days %}
+  <div class="weathertemp">
+  <span class="weatherdate">{{ weather_data['data']['daily'][i]['dt']|date('M j') }}, </span>
+
+  {% set icon = weather_data['data']['daily'][i]['weather'][0]['icon'] %}
+
+  <span class="weathericon"><img src="http://openweathermap.org/img/wn/{{ icon }}@2x.png" width="35px" height="35px"></span>
+
+  <span class="weathertempunit">
+   {{ weather_data['data']['daily'][i]['temp']['max']|round }} /
+   {{ weather_data['data']['daily'][i]['temp']['min']|round }} <sup>o</sup> {{ unit }}
+  </span>
+  </div>
+{% endfor %}
+
+</div>
+{% endif %}
+
+
